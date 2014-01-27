@@ -1,3 +1,4 @@
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -69,6 +70,8 @@ public class HasherMain
         container.add(outputLabel);
         container.add(outputTextBox);
 
+        updateOnKeyPress(); //Show on start-up hash of empty message/ key
+        
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.pack();
         jFrame.setMinimumSize(new Dimension(700, 150));
@@ -121,17 +124,17 @@ public class HasherMain
         {
             updateOnKeyPress();
         }
+    }
 
-        private void updateOnKeyPress()
+    private void updateOnKeyPress()
+    {
+        try
         {
-            try
-            {
-                outputTextBox.setText(getHash(keyTextBox.getText(), messageTextBox.getText()));
-            }
-            catch (Exception ex)
-            {
-                System.err.println(ex);
-            }
+            outputTextBox.setText(getHash(keyTextBox.getText(), messageTextBox.getText()));
+        }
+        catch (Exception ex)
+        {
+            System.err.println(ex);
         }
     }
 
@@ -152,7 +155,7 @@ public class HasherMain
         {
             signingKey = new SecretKeySpec(keyText.getBytes(), HMAC_SHA1_STRING);
         }
-        
+
         mac.init(signingKey);
         byte[] result = mac.doFinal(messageText.getBytes());
         return hashByteToHexString(result);
