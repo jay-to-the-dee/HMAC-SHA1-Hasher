@@ -1,3 +1,13 @@
+# Netbeans stuff
 /build/
 /nbproject/private/
 /dist/
+
+#Github stuff
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
