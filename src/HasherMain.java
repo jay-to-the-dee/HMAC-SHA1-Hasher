@@ -138,7 +138,7 @@ public class HasherMain
         }
     }
 
-    private String getHash(String keyText, String messageText) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException
+    public static String getHash(String keyText, String messageText) throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException
     {
         Mac mac = Mac.getInstance(HMAC_SHA1_STRING);
         SecretKeySpec signingKey;
@@ -161,7 +161,7 @@ public class HasherMain
         return hashByteToHexString(result);
     }
 
-    private String hashByteToHexString(byte hash[])
+    private static String hashByteToHexString(byte hash[])
     {
         String string = "";
 
