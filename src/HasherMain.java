@@ -84,23 +84,8 @@ public class HasherMain
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
-        catch (Exception e)
+        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e)
         {
-            /*try
-            {
-            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
-            {
-            if ("Nimbus".equals(info.getName()))
-            {
-            UIManager.setLookAndFeel(info.getClassName());
-            break;
-            }
-            }
-            }
-            catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e2)
-            {
-            }
-            /**/
         }
     }
 
@@ -132,7 +117,7 @@ public class HasherMain
         {
             outputTextBox.setText(getHash(keyTextBox.getText(), messageTextBox.getText()));
         }
-        catch (Exception ex)
+        catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException ex)
         {
             System.err.println(ex);
         }

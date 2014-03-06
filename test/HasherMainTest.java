@@ -1,3 +1,6 @@
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -44,7 +47,7 @@ public class HasherMainTest
         {
             assertEquals("fbdb1d1b18aa6c08324b7d64b71fb76370690e1d", HasherMain.getHash("", ""));
         }
-        catch (Exception ex)
+        catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException ex)
         {
             fail(ex.toString());
         }
@@ -58,7 +61,7 @@ public class HasherMainTest
         {
             assertEquals("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9", HasherMain.getHash("key", "The quick brown fox jumps over the lazy dog"));
         }
-        catch (Exception ex)
+        catch (UnsupportedEncodingException | InvalidKeyException | NoSuchAlgorithmException ex)
         {
             fail(ex.toString());
         }
